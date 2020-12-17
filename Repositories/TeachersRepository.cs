@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace SPZLab5Var1
 {
@@ -10,6 +11,12 @@ namespace SPZLab5Var1
             new Teacher { Id = 2, Name = "Петр Петров", Age = 30 },
             new Teacher { Id = 3, Name = "Василий Василев", Age = 40 },
         };
+
+        public static void Add(Teacher newTeacher)
+        {
+            newTeacher.Id = Teachers.OrderByDescending(teacher => teacher.Id).Select(teacher => teacher.Id).FirstOrDefault() + 1;
+            Teachers.Add(newTeacher);
+        }
     }
 }
 

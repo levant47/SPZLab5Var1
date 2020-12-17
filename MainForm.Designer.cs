@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.teacherCreateButton = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
@@ -38,14 +38,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.teachersDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // teacherCreateButton
             // 
-            this.button1.Location = new System.Drawing.Point(12, 37);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Создать";
-            this.button1.UseVisualStyleBackColor = true;
+            this.teacherCreateButton.Location = new System.Drawing.Point(12, 37);
+            this.teacherCreateButton.Name = "teacherCreateButton";
+            this.teacherCreateButton.Size = new System.Drawing.Size(75, 23);
+            this.teacherCreateButton.TabIndex = 1;
+            this.teacherCreateButton.Text = "Создать";
+            this.teacherCreateButton.UseVisualStyleBackColor = true;
+            this.teacherCreateButton.Click += new System.EventHandler(this.teacherCreateButton_Click);
             // 
             // button2
             // 
@@ -103,6 +104,7 @@
             this.teachersDataGridView.Size = new System.Drawing.Size(357, 188);
             this.teachersDataGridView.TabIndex = 0;
             this.teachersDataGridView.Text = "dataGridView1";
+            this.teachersDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.teachersDataGridView_CellContentClick);
             // 
             // MainForm
             // 
@@ -113,7 +115,7 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.teacherCreateButton);
             this.Controls.Add(this.teachersDataGridView);
             this.Name = "MainForm";
             this.Text = "SPZ";
@@ -124,7 +126,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button teacherCreateButton;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView teachersDataGridView;
