@@ -20,6 +20,8 @@ namespace SPZLab5Var1
 
         public static void Update(Teacher newTeacher) =>
             Teachers = Teachers.Select(teacher => teacher.Id == newTeacher.Id ? newTeacher : teacher).ToList();
+
+        public static void Delete(int id) => Teachers = Teachers.Where(teacher => teacher.Id != id).ToList();
     }
 }
 
