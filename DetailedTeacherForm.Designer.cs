@@ -31,7 +31,7 @@
             this.nameLabel = new System.Windows.Forms.Label();
             this.ageLabel = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.ageTextBox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -60,12 +60,12 @@
             this.nameTextBox.Size = new System.Drawing.Size(100, 23);
             this.nameTextBox.TabIndex = 2;
             // 
-            // textBox2
+            // ageTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(68, 35);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 3;
+            this.ageTextBox.Location = new System.Drawing.Point(68, 35);
+            this.ageTextBox.Name = "ageTextBox";
+            this.ageTextBox.Size = new System.Drawing.Size(100, 23);
+            this.ageTextBox.TabIndex = 3;
             // 
             // saveButton
             // 
@@ -75,6 +75,7 @@
             this.saveButton.TabIndex = 4;
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // DetailedTeacherForm
             // 
@@ -82,7 +83,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(181, 93);
             this.Controls.Add(this.saveButton);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.ageTextBox);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.ageLabel);
             this.Controls.Add(this.nameLabel);
@@ -98,7 +99,7 @@
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label ageLabel;
         private System.Windows.Forms.TextBox nameTextBox;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox ageTextBox;
         private System.Windows.Forms.Button saveButton;
     }
 }
