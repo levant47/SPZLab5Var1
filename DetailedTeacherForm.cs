@@ -9,12 +9,20 @@ namespace SPZLab5Var1
     public partial class DetailedTeacherForm : Form
     {
         private readonly Func<Teacher, bool> _onSubmit;
+        private readonly Teacher _teacher;
 
-        public DetailedTeacherForm(Func<Teacher, bool> onSubmit)
+        public DetailedTeacherForm(Teacher teacher, Func<Teacher, bool> onSubmit)
         {
             InitializeComponent();
 
+            _teacher = teacher ?? new Teacher();
             _onSubmit = onSubmit;
+
+            if (teacher != null)
+            {
+                nameTextBox.Text = teacher.Name;
+                ageTextBox.Text = teacher.Age.ToString();
+            }
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -33,11 +41,9 @@ namespace SPZLab5Var1
                 return;
             }
 
-            var wasSuccessful = _onSubmit(new Teacher
-            {
-                Name = name,
-                Age = (int)age,
-            });
+            _teacher.Name = name;
+            _teacher.Age = (int)age;
+            var wasSuccessful = _onSubmit(_teacher);
             if (wasSuccessful)
             {
                 Close();

@@ -19,6 +19,7 @@ namespace SPZLab5Var1
 
         private void teacherCreateButton_Click(object sender, EventArgs e) => new DetailedTeacherForm
         (
+            null,
             newTeacher =>
             {
                 TeachersRepository.Add(newTeacher);
@@ -27,8 +28,27 @@ namespace SPZLab5Var1
             }
         ).Show();
 
-        private void teachersDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void teacherEditButton_Click(object sender, EventArgs e)
         {
+            var selectedRowIndex = teachersDataGridView.SelectedRows.Count == 1
+                ? teachersDataGridView.SelectedRows[0].Index
+                : teachersDataGridView.SelectedCells.Count == 1
+                ? teachersDataGridView.SelectedCells[0].RowIndex
+                : (int?)null;
+            if (selectedRowIndex == null)
+            {
+                return;
+            }
+            new DetailedTeacherForm
+            (
+                TeachersRepository.Teachers[(int)selectedRowIndex],
+                updatedTeacher =>
+                {
+                    TeachersRepository.Update(updatedTeacher);
+                    UpdateView();
+                    return true;
+                }
+            ).Show();
         }
     }
 }

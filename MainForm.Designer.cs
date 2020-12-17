@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.teacherCreateButton = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.teacherEditButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,14 +48,15 @@
             this.teacherCreateButton.UseVisualStyleBackColor = true;
             this.teacherCreateButton.Click += new System.EventHandler(this.teacherCreateButton_Click);
             // 
-            // button2
+            // teacherEditButton
             // 
-            this.button2.Location = new System.Drawing.Point(93, 37);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(104, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Редактировать";
-            this.button2.UseVisualStyleBackColor = true;
+            this.teacherEditButton.Location = new System.Drawing.Point(93, 37);
+            this.teacherEditButton.Name = "teacherEditButton";
+            this.teacherEditButton.Size = new System.Drawing.Size(104, 23);
+            this.teacherEditButton.TabIndex = 2;
+            this.teacherEditButton.Text = "Редактировать";
+            this.teacherEditButton.UseVisualStyleBackColor = true;
+            this.teacherEditButton.Click += new System.EventHandler(this.teacherEditButton_Click);
             // 
             // label1
             // 
@@ -104,7 +105,6 @@
             this.teachersDataGridView.Size = new System.Drawing.Size(357, 188);
             this.teachersDataGridView.TabIndex = 0;
             this.teachersDataGridView.Text = "dataGridView1";
-            this.teachersDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.teachersDataGridView_CellContentClick);
             // 
             // MainForm
             // 
@@ -114,7 +114,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.teacherEditButton);
             this.Controls.Add(this.teacherCreateButton);
             this.Controls.Add(this.teachersDataGridView);
             this.Name = "MainForm";
@@ -127,7 +127,7 @@
 
         #endregion
         private System.Windows.Forms.Button teacherCreateButton;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button teacherEditButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView teachersDataGridView;
         private System.Windows.Forms.Button button3;

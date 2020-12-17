@@ -17,6 +17,9 @@ namespace SPZLab5Var1
             newTeacher.Id = Teachers.OrderByDescending(teacher => teacher.Id).Select(teacher => teacher.Id).FirstOrDefault() + 1;
             Teachers.Add(newTeacher);
         }
+
+        public static void Update(Teacher newTeacher) =>
+            Teachers = Teachers.Select(teacher => teacher.Id == newTeacher.Id ? newTeacher : teacher).ToList();
     }
 }
 
