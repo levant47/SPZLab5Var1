@@ -47,6 +47,17 @@ namespace SPZLab5Var1
             ).Show();
         }
 
+        private void teacherDeleteButton_Click(object sender, EventArgs e)
+        {
+            var selectedRowIndex = GetSelectedRowIndex();
+            if (selectedRowIndex == null)
+            {
+                return;
+            }
+            TeachersRepository.Delete(TeachersRepository.Teachers[(int)selectedRowIndex].Id);
+            UpdateView();
+        }
+
         private int? GetSelectedRowIndex() => teachersDataGridView.SelectedRows.Count == 1
             ? teachersDataGridView.SelectedRows[0].Index
             : teachersDataGridView.SelectedCells.Count == 1

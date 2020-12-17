@@ -31,7 +31,7 @@
             this.teacherCreateButton = new System.Windows.Forms.Button();
             this.teacherEditButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.teacherDeleteButton = new System.Windows.Forms.Button();
             this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AgeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teachersDataGridView = new System.Windows.Forms.DataGridView();
@@ -68,14 +68,15 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Учителя";
             // 
-            // button3
+            // teacherDeleteButton
             // 
-            this.button3.Location = new System.Drawing.Point(203, 37);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Удалить";
-            this.button3.UseVisualStyleBackColor = true;
+            this.teacherDeleteButton.Location = new System.Drawing.Point(203, 37);
+            this.teacherDeleteButton.Name = "teacherDeleteButton";
+            this.teacherDeleteButton.Size = new System.Drawing.Size(75, 23);
+            this.teacherDeleteButton.TabIndex = 4;
+            this.teacherDeleteButton.Text = "Удалить";
+            this.teacherDeleteButton.UseVisualStyleBackColor = true;
+            this.teacherDeleteButton.Click += new System.EventHandler(this.teacherDeleteButton_Click);
             // 
             // NameColumn
             // 
@@ -112,7 +113,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.teacherDeleteButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.teacherEditButton);
             this.Controls.Add(this.teacherCreateButton);
@@ -130,7 +131,7 @@
         private System.Windows.Forms.Button teacherEditButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView teachersDataGridView;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button teacherDeleteButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn AgeColumn;
     }
