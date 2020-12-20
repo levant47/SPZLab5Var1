@@ -35,7 +35,15 @@
             this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AgeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teachersDataGridView = new System.Windows.Forms.DataGridView();
+            this.SubjectNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubjectFacultyColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subjectDataGridView = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.subjectCreateButton = new System.Windows.Forms.Button();
+            this.subjectEditButton = new System.Windows.Forms.Button();
+            this.subjectDeleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.teachersDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.subjectDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // teacherCreateButton
@@ -107,12 +115,84 @@
             this.teachersDataGridView.TabIndex = 0;
             this.teachersDataGridView.Text = "dataGridView1";
             // 
+            // SubjectNameColumn
+            // 
+            this.SubjectNameColumn.HeaderText = "Имя";
+            this.SubjectNameColumn.Name = "SubjectNameColumn";
+            this.SubjectNameColumn.ReadOnly = true;
+            this.SubjectNameColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // SubjectFacultyColumn
+            // 
+            this.SubjectFacultyColumn.HeaderText = "Факультет";
+            this.SubjectFacultyColumn.Name = "SubjectFacultyColumn";
+            this.SubjectFacultyColumn.ReadOnly = true;
+            // 
+            // subjectDataGridView
+            // 
+            this.subjectDataGridView.AllowUserToAddRows = false;
+            this.subjectDataGridView.AllowUserToDeleteRows = false;
+            this.subjectDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.subjectDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.subjectDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.subjectDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SubjectNameColumn,
+            this.SubjectFacultyColumn});
+            this.subjectDataGridView.Location = new System.Drawing.Point(375, 66);
+            this.subjectDataGridView.Name = "subjectDataGridView";
+            this.subjectDataGridView.ReadOnly = true;
+            this.subjectDataGridView.Size = new System.Drawing.Size(357, 188);
+            this.subjectDataGridView.TabIndex = 5;
+            this.subjectDataGridView.Text = "dataGridView1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(631, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(101, 25);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Предметы";
+            // 
+            // subjectCreateButton
+            // 
+            this.subjectCreateButton.Location = new System.Drawing.Point(657, 37);
+            this.subjectCreateButton.Name = "subjectCreateButton";
+            this.subjectCreateButton.Size = new System.Drawing.Size(75, 23);
+            this.subjectCreateButton.TabIndex = 7;
+            this.subjectCreateButton.Text = "Создать";
+            this.subjectCreateButton.UseVisualStyleBackColor = true;
+            // 
+            // subjectEditButton
+            // 
+            this.subjectEditButton.Location = new System.Drawing.Point(554, 37);
+            this.subjectEditButton.Name = "subjectEditButton";
+            this.subjectEditButton.Size = new System.Drawing.Size(97, 23);
+            this.subjectEditButton.TabIndex = 8;
+            this.subjectEditButton.Text = "Редактировать";
+            this.subjectEditButton.UseVisualStyleBackColor = true;
+            // 
+            // subjectDeleteButton
+            // 
+            this.subjectDeleteButton.Location = new System.Drawing.Point(473, 37);
+            this.subjectDeleteButton.Name = "subjectDeleteButton";
+            this.subjectDeleteButton.Size = new System.Drawing.Size(75, 23);
+            this.subjectDeleteButton.TabIndex = 9;
+            this.subjectDeleteButton.Text = "Удалить";
+            this.subjectDeleteButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(744, 264);
+            this.Controls.Add(this.subjectDeleteButton);
+            this.Controls.Add(this.subjectEditButton);
+            this.Controls.Add(this.subjectCreateButton);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.subjectDataGridView);
             this.Controls.Add(this.teacherDeleteButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.teacherEditButton);
@@ -121,6 +201,7 @@
             this.Name = "MainForm";
             this.Text = "SPZ";
             ((System.ComponentModel.ISupportInitialize)(this.teachersDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.subjectDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,6 +215,13 @@
         private System.Windows.Forms.Button teacherDeleteButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn AgeColumn;
+        private System.Windows.Forms.DataGridView subjectDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubjectNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubjectFacultyColumn;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button subjectCreateButton;
+        private System.Windows.Forms.Button subjectEditButton;
+        private System.Windows.Forms.Button subjectDeleteButton;
     }
 }
 
