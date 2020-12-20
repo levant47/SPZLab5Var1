@@ -58,23 +58,24 @@
             this.saveButton.Location = new System.Drawing.Point(81, 70);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 2;
+            this.saveButton.TabIndex = 3;
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // facultyTextBox
             // 
             this.facultyTextBox.Location = new System.Drawing.Point(81, 41);
             this.facultyTextBox.Name = "facultyTextBox";
             this.facultyTextBox.Size = new System.Drawing.Size(100, 23);
-            this.facultyTextBox.TabIndex = 3;
+            this.facultyTextBox.TabIndex = 2;
             // 
             // nameTextBox
             // 
             this.nameTextBox.Location = new System.Drawing.Point(81, 12);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(100, 23);
-            this.nameTextBox.TabIndex = 4;
+            this.nameTextBox.TabIndex = 1;
             // 
             // DetailedSubjectForm
             // 

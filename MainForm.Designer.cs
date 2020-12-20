@@ -163,6 +163,7 @@
             this.subjectCreateButton.TabIndex = 7;
             this.subjectCreateButton.Text = "Создать";
             this.subjectCreateButton.UseVisualStyleBackColor = true;
+            this.subjectCreateButton.Click += new System.EventHandler(this.subjectCreateButton_Click);
             // 
             // subjectEditButton
             // 

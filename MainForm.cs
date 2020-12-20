@@ -71,6 +71,17 @@ namespace SPZLab5Var1
             : teachersDataGridView.SelectedCells.Count == 1
             ? teachersDataGridView.SelectedCells[0].RowIndex
             : (int?)null;
+
+        private void subjectCreateButton_Click(object sender, EventArgs e) => new DetailedSubjectForm
+        (
+            null,
+            newSubject =>
+            {
+                SubjectsRepository.Add(newSubject);
+                UpdateSubjectsGrid();
+                return true;
+            }
+        ).Show();
     }
 }
 
