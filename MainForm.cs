@@ -1,5 +1,8 @@
-﻿using SPZLab5Var1.Repositories;
+﻿using Newtonsoft.Json;
+using SPZLab5Var1.Models;
+using SPZLab5Var1.Repositories;
 using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace SPZLab5Var1
@@ -111,6 +114,26 @@ namespace SPZLab5Var1
             }
             SubjectsRepository.Delete(SubjectsRepository.Subjects[(int)selectedRowIndex].Id);
             UpdateSubjectsGrid();
+        }
+
+        private void exportButton_Click(object sender, EventArgs e)
+        {
+            var saveFileDialog = new SaveFileDialog
+            {
+                Filter = "JSON files (*.json)|*.json",
+                FilterIndex = 1,
+                RestoreDirectory = true,
+            };
+            if (saveFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            var fullData = new FullDataModel
+            {
+                Teachers = TeachersRepository.Teachers,
+                Subjects = SubjectsRepository.Subjects,
+            };
+            File.WriteAllText(saveFileDialog.FileName, JsonConvert.SerializeObject(fullData));
         }
     }
 }
