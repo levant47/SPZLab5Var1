@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SPZLab5Var1.Repositories;
+using System;
 using System.Windows.Forms;
 
 namespace SPZLab5Var1
@@ -8,13 +9,20 @@ namespace SPZLab5Var1
         public MainForm()
         {
             InitializeComponent();
-            UpdateView();
+            UpdateTeachersGrid();
+            UpdateSubjectsGrid();
         }
 
-        private void UpdateView()
+        private void UpdateTeachersGrid()
         {
             teachersDataGridView.Rows.Clear();
             TeachersRepository.Teachers.ForEach(teacher => teachersDataGridView.Rows.Add(teacher.Name, teacher.Age));
+        }
+
+        private void UpdateSubjectsGrid()
+        {
+            subjectDataGridView.Rows.Clear();
+            SubjectsRepository.Subjects.ForEach(subject => subjectDataGridView.Rows.Add(subject.Name, subject.Faculty));
         }
 
         private void teacherCreateButton_Click(object sender, EventArgs e) => new DetailedTeacherForm
@@ -23,7 +31,7 @@ namespace SPZLab5Var1
             newTeacher =>
             {
                 TeachersRepository.Add(newTeacher);
-                UpdateView();
+                UpdateTeachersGrid();
                 return true;
             }
         ).Show();
@@ -41,7 +49,7 @@ namespace SPZLab5Var1
                 updatedTeacher =>
                 {
                     TeachersRepository.Update(updatedTeacher);
-                    UpdateView();
+                    UpdateTeachersGrid();
                     return true;
                 }
             ).Show();
@@ -55,7 +63,7 @@ namespace SPZLab5Var1
                 return;
             }
             TeachersRepository.Delete(TeachersRepository.Teachers[(int)selectedRowIndex].Id);
-            UpdateView();
+            UpdateTeachersGrid();
         }
 
         private int? GetSelectedRowIndex() => teachersDataGridView.SelectedRows.Count == 1

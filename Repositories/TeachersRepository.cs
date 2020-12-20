@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace SPZLab5Var1
+namespace SPZLab5Var1.Repositories
 {
     public static class TeachersRepository
     {
-        public static List<Teacher> Teachers = new List<Teacher>()
+        public static List<Teacher> Teachers = new List<Teacher>
         {
             new Teacher { Id = 1, Name = "Иван Иванов", Age = 20 },
             new Teacher { Id = 2, Name = "Петр Петров", Age = 30 },
