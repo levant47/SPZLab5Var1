@@ -38,7 +38,7 @@ namespace SPZLab5Var1
 
         private void teacherEditButton_Click(object sender, EventArgs e)
         {
-            var selectedRowIndex = GetSelectedRowIndex();
+            var selectedRowIndex = GetSelectedRowIndex(teachersDataGridView);
             if (selectedRowIndex == null)
             {
                 return;
@@ -57,7 +57,7 @@ namespace SPZLab5Var1
 
         private void teacherDeleteButton_Click(object sender, EventArgs e)
         {
-            var selectedRowIndex = GetSelectedRowIndex();
+            var selectedRowIndex = GetSelectedRowIndex(teachersDataGridView);
             if (selectedRowIndex == null)
             {
                 return;
@@ -66,10 +66,10 @@ namespace SPZLab5Var1
             UpdateTeachersGrid();
         }
 
-        private int? GetSelectedRowIndex() => teachersDataGridView.SelectedRows.Count == 1
-            ? teachersDataGridView.SelectedRows[0].Index
-            : teachersDataGridView.SelectedCells.Count == 1
-            ? teachersDataGridView.SelectedCells[0].RowIndex
+        private int? GetSelectedRowIndex(DataGridView dataGridView) => dataGridView.SelectedRows.Count == 1
+            ? dataGridView.SelectedRows[0].Index
+            : dataGridView.SelectedCells.Count == 1
+            ? dataGridView.SelectedCells[0].RowIndex
             : (int?)null;
 
         private void subjectCreateButton_Click(object sender, EventArgs e) => new DetailedSubjectForm
@@ -85,7 +85,7 @@ namespace SPZLab5Var1
 
         private void subjectEditButton_Click(object sender, EventArgs e)
         {
-            var selectedRowIndex = GetSelectedRowIndex();
+            var selectedRowIndex = GetSelectedRowIndex(subjectDataGridView);
             if (selectedRowIndex == null)
             {
                 return;
@@ -100,6 +100,17 @@ namespace SPZLab5Var1
                     return true;
                 }
             ).Show();
+        }
+
+        private void subjectDeleteButton_Click(object sender, EventArgs e)
+        {
+            var selectedRowIndex = GetSelectedRowIndex(subjectDataGridView);
+            if (selectedRowIndex == null)
+            {
+                return;
+            }
+            SubjectsRepository.Delete(SubjectsRepository.Subjects[(int)selectedRowIndex].Id);
+            UpdateSubjectsGrid();
         }
     }
 }

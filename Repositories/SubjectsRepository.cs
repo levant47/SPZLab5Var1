@@ -20,6 +20,8 @@ namespace SPZLab5Var1.Repositories
 
         public static void Update(Subject newSubject) =>
             Subjects = Subjects.Select(subject => subject.Id == newSubject.Id ? newSubject : subject).ToList();
+
+        public static void Delete(int id) => Subjects = Subjects.Where(subject => subject.Id != id).ToList();
     }
 }
 

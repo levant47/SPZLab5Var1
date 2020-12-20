@@ -183,6 +183,7 @@
             this.subjectDeleteButton.TabIndex = 9;
             this.subjectDeleteButton.Text = "Удалить";
             this.subjectDeleteButton.UseVisualStyleBackColor = true;
+            this.subjectDeleteButton.Click += new System.EventHandler(this.subjectDeleteButton_Click);
             // 
             // MainForm
             // 
