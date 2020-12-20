@@ -12,6 +12,11 @@ namespace SPZLab5Var1
         public MainForm()
         {
             InitializeComponent();
+            UpdateFullView();
+        }
+
+        private void UpdateFullView()
+        {
             UpdateTeachersGrid();
             UpdateSubjectsGrid();
         }
@@ -134,6 +139,24 @@ namespace SPZLab5Var1
                 Subjects = SubjectsRepository.Subjects,
             };
             File.WriteAllText(saveFileDialog.FileName, JsonConvert.SerializeObject(fullData));
+        }
+
+        private void importButton_Click(object sender, EventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog
+            {
+                Filter = "JSON files (*.json)|*.json",
+                FilterIndex = 1,
+                RestoreDirectory = true,
+            };
+            if (openFileDialog.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            var fullData = JsonConvert.DeserializeObject<FullDataModel>(File.ReadAllText(openFileDialog.FileName));
+            TeachersRepository.Teachers = fullData.Teachers;
+            SubjectsRepository.Subjects = fullData.Subjects;
+            UpdateFullView();
         }
     }
 }
