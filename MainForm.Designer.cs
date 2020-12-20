@@ -173,6 +173,7 @@
             this.subjectEditButton.TabIndex = 8;
             this.subjectEditButton.Text = "Редактировать";
             this.subjectEditButton.UseVisualStyleBackColor = true;
+            this.subjectEditButton.Click += new System.EventHandler(this.subjectEditButton_Click);
             // 
             // subjectDeleteButton
             // 

@@ -82,6 +82,25 @@ namespace SPZLab5Var1
                 return true;
             }
         ).Show();
+
+        private void subjectEditButton_Click(object sender, EventArgs e)
+        {
+            var selectedRowIndex = GetSelectedRowIndex();
+            if (selectedRowIndex == null)
+            {
+                return;
+            }
+            new DetailedSubjectForm
+            (
+                SubjectsRepository.Subjects[(int)selectedRowIndex],
+                updatedSubject =>
+                {
+                    SubjectsRepository.Update(updatedSubject);
+                    UpdateSubjectsGrid();
+                    return true;
+                }
+            ).Show();
+        }
     }
 }
 
