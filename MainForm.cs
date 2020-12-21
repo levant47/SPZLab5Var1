@@ -157,6 +157,7 @@ namespace SPZLab5Var1
             {
                 Teachers = TeachersRepository.Teachers,
                 Subjects = SubjectsRepository.Subjects,
+                TeacherSubjects = TeacherSubjectRepository.TeacherSubjects,
             };
             File.WriteAllText(saveFileDialog.FileName, JsonConvert.SerializeObject(fullData));
         }
@@ -176,6 +177,7 @@ namespace SPZLab5Var1
             var fullData = JsonConvert.DeserializeObject<FullDataModel>(File.ReadAllText(openFileDialog.FileName));
             TeachersRepository.Teachers = fullData.Teachers;
             SubjectsRepository.Subjects = fullData.Subjects;
+            TeacherSubjectRepository.TeacherSubjects = fullData.TeacherSubjects;
             UpdateFullView();
         }
     }
