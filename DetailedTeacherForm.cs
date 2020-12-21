@@ -1,4 +1,5 @@
-﻿using SPZLab5Var1.Utilities;
+﻿using SPZLab5Var1.Models;
+using SPZLab5Var1.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,20 +9,28 @@ namespace SPZLab5Var1
 {
     public partial class DetailedTeacherForm : Form
     {
-        private readonly Func<Teacher, bool> _onSubmit;
+        private readonly Func<TeacherVM, bool> _onSubmit;
+        private readonly List<Subject> _subjectOptions;
         private readonly Teacher _teacher;
 
-        public DetailedTeacherForm(Teacher teacher, Func<Teacher, bool> onSubmit)
+        public DetailedTeacherForm(TeacherVM teacherVM, List<Subject> subjectOptions, Func<TeacherVM, bool> onSubmit)
         {
             InitializeComponent();
 
-            _teacher = teacher ?? new Teacher();
+            _teacher = teacherVM?.Teacher ?? new Teacher();
+            _subjectOptions = subjectOptions;
             _onSubmit = onSubmit;
 
-            if (teacher != null)
+            subjectOptions.ForEach(subject => subjectListBox.Items.Add(subject.Name));
+
+            if (teacherVM != null)
             {
-                nameTextBox.Text = teacher.Name;
-                ageTextBox.Text = teacher.Age.ToString();
+                nameTextBox.Text = teacherVM.Teacher.Name;
+                ageTextBox.Text = teacherVM.Teacher.Age.ToString();
+                for (var i = 0; i < subjectOptions.Count; i++)
+                {
+                    subjectListBox.SetSelected(i, teacherVM.SubjectIds.Contains(subjectOptions[i].Id));
+                }
             }
         }
 
@@ -41,9 +50,15 @@ namespace SPZLab5Var1
                 return;
             }
 
+            var subjectIds = subjectListBox.SelectedIndices.Cast<int>().Select(index => _subjectOptions[index].Id).ToList();
+
             _teacher.Name = name;
             _teacher.Age = (int)age;
-            var wasSuccessful = _onSubmit(_teacher);
+            var wasSuccessful = _onSubmit(new TeacherVM
+            {
+                Teacher = _teacher,
+                SubjectIds = subjectIds,
+            });
             if (wasSuccessful)
             {
                 Close();

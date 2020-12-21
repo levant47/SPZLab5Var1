@@ -12,10 +12,11 @@ namespace SPZLab5Var1.Repositories
             new Teacher { Id = 3, Name = "Василий Василев", Age = 40 },
         };
 
-        public static void Add(Teacher newTeacher)
+        public static Teacher Add(Teacher newTeacher)
         {
             newTeacher.Id = Teachers.OrderByDescending(teacher => teacher.Id).Select(teacher => teacher.Id).FirstOrDefault() + 1;
             Teachers.Add(newTeacher);
+            return newTeacher;
         }
 
         public static void Update(Teacher newTeacher) =>

@@ -36,9 +36,11 @@ namespace SPZLab5Var1
         private void teacherCreateButton_Click(object sender, EventArgs e) => new DetailedTeacherForm
         (
             null,
-            newTeacher =>
+            SubjectsRepository.Subjects,
+            newTeacherVM =>
             {
-                TeachersRepository.Add(newTeacher);
+                var newTeacherId = TeachersRepository.Add(newTeacherVM.Teacher).Id;
+                TeacherSubjectRepository.AddSubjectsForTeacher(newTeacherId, newTeacherVM.SubjectIds);
                 UpdateTeachersGrid();
                 return true;
             }
@@ -51,12 +53,20 @@ namespace SPZLab5Var1
             {
                 return;
             }
+            var teacher = TeachersRepository.Teachers[(int)selectedRowIndex];
+            var teacherVM = new TeacherVM
+            {
+                Teacher = teacher,
+                SubjectIds = TeacherSubjectRepository.GetSubjectsForTeacher(teacher.Id),
+            };
             new DetailedTeacherForm
             (
-                TeachersRepository.Teachers[(int)selectedRowIndex],
-                updatedTeacher =>
+                teacherVM,
+                SubjectsRepository.Subjects,
+                updatedTeacherVM =>
                 {
-                    TeachersRepository.Update(updatedTeacher);
+                    TeachersRepository.Update(updatedTeacherVM.Teacher);
+                    TeacherSubjectRepository.UpdateSubjectsForTeacher(updatedTeacherVM.Teacher.Id, updatedTeacherVM.SubjectIds);
                     UpdateTeachersGrid();
                     return true;
                 }

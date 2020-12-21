@@ -33,6 +33,8 @@
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.ageTextBox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.subjectListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // nameLabel
@@ -57,19 +59,19 @@
             // 
             this.nameTextBox.Location = new System.Drawing.Point(68, 6);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(100, 23);
+            this.nameTextBox.Size = new System.Drawing.Size(121, 23);
             this.nameTextBox.TabIndex = 2;
             // 
             // ageTextBox
             // 
             this.ageTextBox.Location = new System.Drawing.Point(68, 35);
             this.ageTextBox.Name = "ageTextBox";
-            this.ageTextBox.Size = new System.Drawing.Size(100, 23);
+            this.ageTextBox.Size = new System.Drawing.Size(121, 23);
             this.ageTextBox.TabIndex = 3;
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(68, 64);
+            this.saveButton.Location = new System.Drawing.Point(68, 167);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 4;
@@ -77,11 +79,32 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(-2, 64);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 15);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Предметы";
+            // 
+            // subjectListBox
+            // 
+            this.subjectListBox.FormattingEnabled = true;
+            this.subjectListBox.ItemHeight = 15;
+            this.subjectListBox.Location = new System.Drawing.Point(69, 65);
+            this.subjectListBox.Name = "subjectListBox";
+            this.subjectListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.subjectListBox.Size = new System.Drawing.Size(120, 94);
+            this.subjectListBox.TabIndex = 7;
+            // 
             // DetailedTeacherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(181, 93);
+            this.ClientSize = new System.Drawing.Size(208, 199);
+            this.Controls.Add(this.subjectListBox);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.ageTextBox);
             this.Controls.Add(this.nameTextBox);
@@ -101,5 +124,7 @@
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.TextBox ageTextBox;
         private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox subjectListBox;
     }
 }

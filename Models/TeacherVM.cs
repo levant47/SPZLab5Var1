@@ -6,7 +6,7 @@ namespace SPZLab5Var1.Models
     {
         public Teacher Teacher { get; set; }
 
-        public List<Subject> Subjects { get; set; }
+        public List<int> SubjectIds { get; set; }
     }
 }
 
