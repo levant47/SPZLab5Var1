@@ -5,6 +5,7 @@ namespace SPZLab5Var1.Repositories
 {
     public static class TeachersRepository
     {
+        private static int _latestId = 3;
         public static List<Teacher> Teachers = new List<Teacher>
         {
             new Teacher { Id = 1, Name = "Иван Иванов", Age = 20 },
@@ -14,7 +15,8 @@ namespace SPZLab5Var1.Repositories
 
         public static Teacher Add(Teacher newTeacher)
         {
-            newTeacher.Id = Teachers.OrderByDescending(teacher => teacher.Id).Select(teacher => teacher.Id).FirstOrDefault() + 1;
+            _latestId += 1;
+            newTeacher.Id = _latestId;
             Teachers.Add(newTeacher);
             return newTeacher;
         }

@@ -22,6 +22,24 @@ namespace SPZLab5Var1.Repositories
 
         public static List<int> GetSubjectsForTeacher(int teacherId) => TeacherSubjects
             .Where(teacherSubject => teacherSubject.TeacherId == teacherId)
-            .Select(teacherSubject => teacherSubject.SubjectId).ToList();
+            .Select(teacherSubject => teacherSubject.SubjectId)
+            .ToList();
+
+        public static void AddTeachersForSubject(int subjectId, List<int> teacherIds) =>
+            TeacherSubjects.AddRange(teacherIds.Select(teacherId => new TeacherSubject { TeacherId = teacherId, SubjectId = subjectId }));
+
+        public static List<int> GetTeachersForSubject(int subjectId) => TeacherSubjects
+            .Where(teacherSubject => teacherSubject.SubjectId == subjectId)
+            .Select(teacherSubject => teacherSubject.TeacherId)
+            .ToList();
+
+        public static void RemoveTeachersForSubject(int subjectId) =>
+            TeacherSubjects = TeacherSubjects.Where(teacherSubject => teacherSubject.SubjectId != subjectId).ToList();
+
+        public static void UpdateTeachersForSubject(int subjectId, List<int> teacherIds)
+        {
+            RemoveTeachersForSubject(subjectId);
+            AddTeachersForSubject(subjectId, teacherIds);
+        }
     }
 }

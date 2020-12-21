@@ -1,4 +1,5 @@
-﻿using SPZLab5Var1.Utilities;
+﻿using SPZLab5Var1.Models;
+using SPZLab5Var1.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,19 +10,27 @@ namespace SPZLab5Var1
     public partial class DetailedSubjectForm : Form
     {
         private readonly Subject _subject;
-        private readonly Func<Subject, bool> _onSubmit;
+        private readonly List<Teacher> _teacherOptions;
+        private readonly Func<SubjectVM, bool> _onSubmit;
 
-        public DetailedSubjectForm(Subject subject, Func<Subject, bool> onSubmit)
+        public DetailedSubjectForm(SubjectVM subjectVM, List<Teacher> teacherOptions, Func<SubjectVM, bool> onSubmit)
         {
             InitializeComponent();
 
-            _subject = subject ?? new Subject();
+            _subject = subjectVM?.Subject ?? new Subject();
+            _teacherOptions = teacherOptions;
             _onSubmit = onSubmit;
 
-            if (subject != null)
+            teacherOptions.ForEach(teacher => teacherListBox.Items.Add(teacher.Name));
+
+            if (subjectVM != null)
             {
-                nameTextBox.Text = subject.Name;
-                facultyTextBox.Text = subject.Faculty;
+                nameTextBox.Text = subjectVM.Subject.Name;
+                facultyTextBox.Text = subjectVM.Subject.Faculty;
+                for (var i = 0; i < teacherOptions.Count; i++)
+                {
+                    teacherListBox.SetSelected(i, subjectVM.TeacherIds.Contains(teacherOptions[i].Id));
+                }
             }
         }
 
@@ -41,9 +50,15 @@ namespace SPZLab5Var1
                 return;
             }
 
+            var teacherIds = teacherListBox.SelectedIndices.Cast<int>().Select(index => _teacherOptions[index].Id).ToList();
+
             _subject.Name = name;
             _subject.Faculty = faculty;
-            var wasSuccessful = _onSubmit(_subject);
+            var wasSuccessful = _onSubmit(new SubjectVM
+            {
+                Subject = _subject,
+                TeacherIds = teacherIds,
+            });
             if (wasSuccessful)
             {
                 Close();

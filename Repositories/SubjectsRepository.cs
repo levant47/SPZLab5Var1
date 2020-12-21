@@ -5,6 +5,7 @@ namespace SPZLab5Var1.Repositories
 {
     public class SubjectsRepository
     {
+        private static int _latestId = 3;
         public static List<Subject> Subjects = new List<Subject>
         {
             new Subject { Id = 1, Name = "Высшая Математика", Faculty = "Факультет Математики" },
@@ -12,10 +13,12 @@ namespace SPZLab5Var1.Repositories
             new Subject { Id = 3, Name = "Системное Програмное Обеспечение", Faculty = "Факультет Компьютерной Инженерии" },
         };
 
-        public static void Add(Subject newSubject)
+        public static Subject Add(Subject newSubject)
         {
-            newSubject.Id = Subjects.OrderByDescending(subject => subject.Id).Select(subject => subject.Id).FirstOrDefault() + 1;
+            _latestId += 1;
+            newSubject.Id = _latestId;
             Subjects.Add(newSubject);
+            return newSubject;
         }
 
         public static void Update(Subject newSubject) =>

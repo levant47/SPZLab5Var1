@@ -93,9 +93,11 @@ namespace SPZLab5Var1
         private void subjectCreateButton_Click(object sender, EventArgs e) => new DetailedSubjectForm
         (
             null,
-            newSubject =>
+            TeachersRepository.Teachers,
+            newSubjectVM =>
             {
-                SubjectsRepository.Add(newSubject);
+                var newSubjectId = SubjectsRepository.Add(newSubjectVM.Subject).Id;
+                TeacherSubjectRepository.AddTeachersForSubject(newSubjectId, newSubjectVM.TeacherIds);
                 UpdateSubjectsGrid();
                 return true;
             }
@@ -108,12 +110,20 @@ namespace SPZLab5Var1
             {
                 return;
             }
+            var subject = SubjectsRepository.Subjects[(int)selectedRowIndex];
+            var subjectVM = new SubjectVM
+            {
+                Subject = subject,
+                TeacherIds = TeacherSubjectRepository.GetTeachersForSubject(subject.Id),
+            };
             new DetailedSubjectForm
             (
-                SubjectsRepository.Subjects[(int)selectedRowIndex],
-                updatedSubject =>
+                subjectVM,
+                TeachersRepository.Teachers,
+                updatedSubjectVM =>
                 {
-                    SubjectsRepository.Update(updatedSubject);
+                    SubjectsRepository.Update(updatedSubjectVM.Subject);
+                    TeacherSubjectRepository.UpdateTeachersForSubject(updatedSubjectVM.Subject.Id, updatedSubjectVM.TeacherIds);
                     UpdateSubjectsGrid();
                     return true;
                 }
